@@ -36,19 +36,16 @@ class AdminSiteTests(TestCase):
         # Django specific test assertions, checks user in response
         self.assertContains(res, self.user.name)
         self.assertContains(res, self.user.email)
-    
+
     def test_user_change_page(self):
         """Test that user edit page works"""
-        #e g: /admin/core/user/3
+        # e g: /admin/core/user/3
         url = reverse('admin:core_user_change', args=[self.user.id])
         res = self.client.get(url)
         self.assertAlmostEqual(res.status_code, 200)
 
     def test_create_user_page(self):
         """Test that create user page works"""
-        url = reverse('admin"core_user_add')
+        url = reverse('admin:core_user_add')
         res = self.client.get(url)
         self.assertAlmostEqual(res.status_code, 200)
-
-        
-
